@@ -7,7 +7,7 @@ end
 
 @testset "Compare with Barebones implementation" begin
     β = [.3, .5, 0]
-    X, y = Pro.sim_binary(100000, β)
+    X, y = Pro.Simulate.binary(100000, β)
     
     l1_bare = Barebones.pen_logreg(X, y)
     l1_prox = Pro.fit(Pro.ProximalLogistic(X, y, zero(β), ProximalOperators.NormL1(1)))
