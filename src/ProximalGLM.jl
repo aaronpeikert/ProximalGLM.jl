@@ -2,9 +2,9 @@ module ProximalGLM
 import ProximalOperators, ProximalAlgorithms
 import Distributions
 import Random: GLOBAL_RNG, AbstractRNG
-import StatsModels: fit, @formula, RegressionModel
+import StatsModels: fit, fit!, @formula, RegressionModel
 # reexport
-export  fit, @formula
+export  fit, fit!, @formula
 # own
 export ProximalLogistic
 include("types.jl")
