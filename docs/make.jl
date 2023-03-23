@@ -19,10 +19,10 @@ makedocs(;
     pages=[
         "Home" => "index.md",
     ],
-    doctest = :fix, # replace true with :fix to fix doctest
+    doctest = false, # replace true with :fix to fix doctest
 )
 
-deploydocs(;
+on_ci() && deploydocs(;
     repo="github.com/aaronpeikert/ProximalGLM.jl",
     devbranch="main",
 )

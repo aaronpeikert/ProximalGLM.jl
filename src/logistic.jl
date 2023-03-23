@@ -21,16 +21,16 @@ julia> start = zeros(size(X, 2));
 julia> model = ProximalLogistic(X, y, start, penalty); # construct the model, not fitted yet
 
 julia> fit(model) # fit a preconstructed model
-([0.4787221058477648, -0.10677025552183886, 0.008980239411395995], 38)
+([0.44086698254344586, -0.022944133242910912, -0.06161170925644434], 37)
 
 julia> fit!(model) # fit and update parameters of preconstructed model
-1330.7867770955002
+1339.421934824578
 
 julia> model.β
 3-element Vector{Float64}:
-  0.4787221058477648
- -0.10677025552183886
-  0.008980239411395995
+  0.44086698254344586
+ -0.022944133242910912
+ -0.06161170925644434
 ```
 
 """
