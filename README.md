@@ -10,7 +10,7 @@
 # ProximalGLM
 
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://aaronpeikert.github.io/ProximalGLM.jl/stable/) [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://aaronpeikert.github.io/ProximalGLM.jl/dev/) [![Build Status](https://github.com/aaronpeikert/ProximalGLM.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aaronpeikert/ProximalGLM.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Dev Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://aaronpeikert.github.io/ProximalGLM.jl/dev/) [![Build Status](https://github.com/aaronpeikert/ProximalGLM.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aaronpeikert/ProximalGLM.jl/actions/workflows/CI.yml?query=branch%3Amain) [![codecov](https://codecov.io/github/aaronpeikert/ProximalGLM.jl/branch/main/graph/badge.svg?token=vaFzKCJIG7)](https://codecov.io/github/aaronpeikert/ProximalGLM.jl)
 
 
 To install `ProximalGLM.jl`:
