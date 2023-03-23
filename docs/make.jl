@@ -22,8 +22,12 @@ makedocs(;
         edit_link="main",
         assets=String[],
     ),
-    pages=[
+    pages = [
         "Home" => "index.md",
+        "Manual" => Any[
+            "man/logistic.md"
+        ],
+        "Index" => "index.md"
     ],
     doctest = false, # replace true with :fix to fix doctest
 )

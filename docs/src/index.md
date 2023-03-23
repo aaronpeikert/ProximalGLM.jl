@@ -14,6 +14,8 @@ To install `ProximalGLM.jl`:
 import Pkg; Pkg.add("ProximalGLM")
 ```
 
+A simple example:
+
 ```@example
 using ProximalGLM
 using DataFrames, StableRNGs
@@ -21,11 +23,4 @@ using DataFrames, StableRNGs
 X, y = ProximalGLM.Simulate.binary(1000, β; rng = StableRNG(1));
 data = hcat(DataFrame(y = y), DataFrame(X, :auto))
 fit(ProximalLogistic, @formula(y ~ x1 + x2 + x3), data)
-```
-
-```@index
-```
-
-```@autodocs
-Modules = [ProximalGLM]
 ```
