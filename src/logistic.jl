@@ -9,6 +9,7 @@ julia> import StableRNGs
 
 julia> X, y = ProximalGLM.Simulate.binary(1000, [0.5, 0, 0], rng = StableRNGs.StableRNG(1));
 
+
 ```
 
 ```jldoctest 1
@@ -18,19 +19,21 @@ julia> penalty = PO.NormL1(1);
 
 julia> start = zeros(size(X, 2));
 
+
 julia> model = ProximalLogistic(X, y, start, penalty); # construct the model, not fitted yet
 
+
 julia> fit(model) # fit a preconstructed model
-([0.44086698254344586, -0.022944133242910912, -0.06161170925644434], 37)
+([0.44087, -0.02294, -0.06161], 37)
 
 julia> fit!(model) # fit and update parameters of preconstructed model
-1339.421934824578
+1339.42193
 
 julia> model.β
 3-element Vector{Float64}:
-  0.44086698254344586
- -0.022944133242910912
- -0.06161170925644434
+  0.44087
+ -0.02294
+ -0.06161
 ```
 
 """

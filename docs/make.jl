@@ -3,7 +3,13 @@ using Documenter
 
 on_ci() = get(ENV, "CI", nothing) == "true"
 
-DocMeta.setdocmeta!(ProximalGLM, :DocTestSetup, :(using ProximalGLM); recursive=true)
+DocMeta.setdocmeta!(ProximalGLM, :DocTestSetup,
+    :(
+        using ProximalGLM;
+        import Printf;
+        Base.show(io::IO, f::Float64) = Printf.@printf(io, "%1.5f", f)
+    );
+    recursive=true)
 
 makedocs(;
     modules=[ProximalGLM],
