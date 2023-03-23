@@ -478,7 +478,7 @@ uuid = "dc4f5ac2-75d1-4f31-931e-60435d74994b"
 version = "0.1.1"
 
 [[deps.ProximalGLM]]
-deps = ["Distributions", "GLM", "ProximalAlgorithms", "ProximalOperators", "Random", "StatsBase", "StatsModels"]
+deps = ["Distributions", "GLM", "ProximalAlgorithms", "ProximalOperators", "Random", "StatsModels"]
 path = ".."
 uuid = "60ab22fa-94d7-4e99-b01e-cfaa5309f8c4"
 version = "0.1.0"
