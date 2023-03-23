@@ -24,7 +24,7 @@ function binary(py; rng::AbstractRNG = GLOBAL_RNG)
 end
 function binary(n::Int, β::AbstractVector; rng::AbstractRNG = GLOBAL_RNG, args...)
     X, py = binary_prob(n, β; rng = rng, args...)
-    y = binary(py)
+    y = binary(py; rng = rng)
     X, y
 end
 

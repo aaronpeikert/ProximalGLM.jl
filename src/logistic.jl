@@ -5,28 +5,32 @@ Fit a Logistic Regression using [`ProximalAlgorithms`](https://github.com/JuliaF
 
 ```jldoctest 1
 # generate some data
-import StableRNGs
-X, y = ProximalGLM.Simulate.binary(1000, [0.5, 0, 0], rng = StableRNGs.StableRNG(1));
-# most penalties come from
-import ProximalOperators as PO
+julia> import StableRNGs
 
-# output
+julia> X, y = ProximalGLM.Simulate.binary(1000, [0.5, 0, 0], rng = StableRNGs.StableRNG(1));
 
 ```
 
 ```jldoctest 1
+julia> import ProximalOperators as PO
+
 julia> penalty = PO.NormL1(1);
+
 julia> start = zeros(size(X, 2));
+
 julia> model = ProximalLogistic(X, y, start, penalty); # construct the model, not fitted yet
+
 julia> fit(model) # fit a preconstructed model
-([0.5311722129202233, 0.12916070493396065, 0.13159411511751348], 41)
+([0.4787221058477648, -0.10677025552183886, 0.008980239411395995], 38)
+
 julia> fit!(model) # fit and update parameters of preconstructed model
-1313.2748302947948
+1330.7867770955002
+
 julia> model.β
 3-element Vector{Float64}:
- 0.5311722129202233
- 0.12916070493396065
- 0.13159411511751348
+  0.4787221058477648
+ -0.10677025552183886
+  0.008980239411395995
 ```
 
 """
