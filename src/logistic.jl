@@ -1,3 +1,35 @@
+sigmoid(x::Number) = one(x) / (one(x) + exp(-x))
+
+"""
+    SimpleLogistic(X, y, β)
+
+Underlying representation of a logistic regression. Note that β is not nessesarily fit to the data.
+"""
+struct SimpleLogistic{TX, Ty, Tβ} <: SimpleModel
+    X::TX
+    y::Ty
+    β::Tβ
+end
+
+function predict(model::SimpleLogistic, β = model.β, X = model.X)
+    sigmoid.(X * β)
+end
+
+function loglik(model::SimpleLogistic, β = model.β, X = model.X)
+    ŷ = predict(model, β, X)
+    y = model.y
+    positiv_sum = sum(y .* log.(ŷ))
+    negativ_sum = sum((1.0 .- y) .* log.(1.0 .- ŷ))
+    -2(positiv_sum + negativ_sum)
+end
+
+function updateβ!(model::SimpleModel, β)
+    model.β .= β
+    loglik(model)
+end
+
+β(model::SimpleModel) = model.β
+
 """
     ProximalLogistic(X, y, β)
 
@@ -29,7 +61,7 @@ julia> fit(model) # fit a preconstructed model
 julia> fit!(model) # fit and update parameters of preconstructed model
 1339.42193
 
-julia> model.β
+julia> ProximalGLM.β(model)
 3-element Vector{Float64}:
   0.44087
  -0.02294
@@ -37,28 +69,16 @@ julia> model.β
 ```
 
 """
-struct ProximalLogistic{T1, T2, T3, T4} <: ProximalModel
-    X::T1
-    y::T2
-    β::T3
-    penalty::T4
+struct ProximalLogistic{Tm, Tp} <: ProximalModel
+    model::Tm
+    penalty::Tp
+    ProximalLogistic(X, y, β, penalty) = new{SimpleLogistic, typeof(penalty)}(SimpleLogistic(X, y, β), penalty)
 end
 
-sigmoid(x::Number) = one(x) / (one(x) + exp(-x))
+penalty(x::ProximalModel) = x.penalty
 
-function predict(model::ProximalLogistic, β = model.β, X = model.X)
-    sigmoid.(X * β)
-end
-
-function loglik(model::ProximalLogistic, β = model.β, X = model.X)
-    ŷ = predict(model, β, X)
-    y = model.y
-    positiv_sum = sum(y .* log.(ŷ))
-    negativ_sum = sum((1.0 .- y) .* log.(1.0 .- ŷ))
-    -2(positiv_sum + negativ_sum)
-end
-
-function updateβ!(model::ProximalModel, β)
-    model.β .= β
-    loglik(model)
-end
+predict(model::ProximalModel, args...) = predict(model.model, args...)
+loglik(model::ProximalModel, args...) = loglik(model.model, args...)
+updateβ!(model::ProximalModel, args...) = updateβ!(model.model, args...)
+β(model::ProximalModel) = β(model.model)
+const beta = β

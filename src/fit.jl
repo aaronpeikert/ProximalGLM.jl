@@ -4,7 +4,7 @@ end
 
 function fit(model::ProximalLogistic)
     ffb = ProximalAlgorithms.FastForwardBackward()
-    ffb(x0=model.β, f=β->loglik(model, β), g=model.penalty)
+    ffb(x0=β(model), f=β->loglik(model, β), g=model.penalty)
 end
 
 function fit!(model::ProximalLogistic)
