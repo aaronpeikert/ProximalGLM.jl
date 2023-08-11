@@ -12,3 +12,5 @@ include("logistic.jl")
 include("simulate.jl")
 include("fit.jl")
 end
+
+#xz has been here pull request test
