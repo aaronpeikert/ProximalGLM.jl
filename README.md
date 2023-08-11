@@ -17,7 +17,8 @@ To install `ProximalGLM.jl`:
 
 
 ```julia
-import Pkg; Pkg.add("ProximalGLM")
+#import Pkg; Pkg.add("ProximalGLM")
+import Pkg; Pkg.add(url="https://github.com/aaronpeikert/ProximalGLM.jl")
 ```
 
 
